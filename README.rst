@@ -15,7 +15,7 @@ How to Use This Docker Image
 ============================
 
 Spilo's setup assumes that you've correctly configured a load balancer (HAProxy, ELB, Google load balancer) that directs client connections to the master. There are two ways to achieve this: A) if the load balancer relies on the status code to distinguish between the healthy and failed nodes (like ELB), then one needs to configure it to poll the API URL; otherwise, B) you can use callback scripts to change the load balancer configuration dynamically.
-
+ 
 How to Build This Docker Image
 ==============================
 
