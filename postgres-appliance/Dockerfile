@@ -78,6 +78,7 @@ ENV POSTGIS_VERSION=3.0 \
     PLANTUNER_COMMIT=7c276460e4a4052e454b9c44148346e7286eb280
 
 RUN export DEBIAN_FRONTEND=noninteractive \
+    # TODO: Remove echo \
     && echo "PGOLDVERSIONS=$PGOLDVERSIONS" \
     && set -ex \
     && sed -i 's/^#\s*\(deb.*universe\)$/\1/g' /etc/apt/sources.list \
@@ -132,6 +133,7 @@ RUN export DEBIAN_FRONTEND=noninteractive \
     # forbid creation of a main cluster when package is installed
     && sed -ri 's/#(create_main_cluster) .*$/\1 = false/' /etc/postgresql-common/createcluster.conf \
 \
+    # TODO: Remove echo \
     && echo "DEB_PG_SUPPORTED_VERSIONS=$DEB_PG_SUPPORTED_VERSIONS" \
     && for version in $DEB_PG_SUPPORTED_VERSIONS; do \
             sed -i "s/ main.*$/ main $version/g" /etc/apt/sources.list.d/pgdg.list \
